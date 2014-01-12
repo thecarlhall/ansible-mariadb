@@ -1,0 +1,4 @@
+---
+mariadb:
+  gpg_key: '0xcbcb082a1bb943db'
+  apt_url: 'deb http://ftp.osuosl.org/pub/mariadb/repo/10.0/debian wheezy main'

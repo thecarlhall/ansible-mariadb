@@ -1,0 +1,16 @@
+---
+- include_vars: "{{ ansible_distribution }}.yml"
+
+- name: install tools
+  apt: name={{ item }} update_cache=yes
+  with_items:
+    - software-properties-common
+
+- name: add mariadb repo key
+  apt_key: url=http://keyserver.ubuntu.com/pks/lookup?op=get&search={{ mariadb.gpg_key }} state=present
+
+- name: add mariadb repo
+  apt_repository: repo='{{ mariadb.apt_url }}' state=present
+
+- name: install mariadb server
+  apt: name=mariadb-server update_cache=true state=present
